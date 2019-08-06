@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/create.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<a href="/projects">Dashboard</a>
+			<span> | </span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div id="container">
+			<h1>Create Project</h1>
+			<form action="/create_project" method="POST">
+				<div>
+					<span>Title:</span>
+					<input type="text" name="title">
+				</div>
+				<div>
+					<span>Timeframe:</span>
+					<input type="date" name="date_to">
+					<span class="time_frame_to">to</span>
+					<input type="date" name="date_from">
+				</div>
+				<div class="project_description">
+					<span>Project Description</span>
+					<textarea name="description" id="" cols="30" rows="10"></textarea>
+				</div>
+				<input type="submit" value="submit">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

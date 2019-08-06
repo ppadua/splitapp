@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/projects.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<a href="/create">Create Project</a>
+			<span> | </span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div id="container">
+			<h1>Hi <%= user_session.user_name %>!</h1>
+			<p>Here are all on-going projects</p>
+			<ul>
+				<% for(var index = 0; index < user_results.length; index++){ %>
+					<li>
+						<h2><a href="/project/<%= user_results[index].project_id %>"><%= user_results[index].title %></a></h2>
+						<% if(user_results[index].all_task_status){ %>
+						<p>(Completed)</p>
+						<% } %>
+						<p>Project Manager: <%= user_results[index].name %></p>
+					</li>
+				<% }  %>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

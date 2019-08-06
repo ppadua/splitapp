@@ -1,0 +1,90 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#container > h1{
+	margin-bottom: 20px;
+}
+
+#project_members{
+	padding: 20px 0 20px 0;
+	margin-bottom: 50px;
+}
+#project_members p{
+	margin-bottom: 10px;
+}
+
+#project_members .project_manager, #project_members .right_project_members{
+	display: inline-block;
+	vertical-align: top;
+}
+
+#project_members .right_project_members{
+	float:right;
+}
+
+#project_members .right_project_members .project_members, #project_members .right_project_members .add_team_button{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.project_members{
+	text-align: right;
+	margin-right: 	20px;
+}
+
+.project_members li{
+	line-height: 30px;
+}
+
+.add_team_button button{
+	padding: 5px 10px;
+}
+
+#project_description{
+	clear: both;
+	line-height: 	30px;
+	margin-bottom: 	20px;
+}
+
+.project_tasks{
+	border: 1px solid black;
+	width: 30%;
+	vertical-align: top;
+	display: table-cell;
+
+}
+.project_tasks li {
+	padding: 5px;
+	height: 40px;
+}
+.project_tasks li p{
+	margin-bottom: 0px;
+}
+.project_tasks li:first-child{
+	background: silver;
+	height: 20px;
+}
+
+#upcoming_task{
+	margin-top: 20px;
+}
+
+#upcoming_task div{
+	margin: 10px 0px;
+}
+#upcoming_task span{
+	vertical-align: top;
+	display: inline-block;
+	width: 100px;
+}
+#upcoming_task textarea{
+	resize: none;
+}
+#upcoming_task select{
+	width: 230px;
+}
+#upcoming_task input[type='submit']{
+	padding: 5px 20px;
+}

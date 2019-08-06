@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/project.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<a href="/projects">Dashboard</a>
+			<span> | </span>
+			<a href="/create">Create Project</a>
+			<span> | </span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div id="container">
+			<h1><%= project_details_results.title %></h1>
+			<div id="project_members">
+				<p class="project_manager">Project Manager : <span><%= project_details_results.name %></span></p>
+				<div class="right_project_members">
+					<div class="project_members">
+						<p>Team Members:</p>
+						<ul>
+							<% 	for(var index = 0; index < project_member_results.length; index++) {
+									if(project_member_results[index].user_type == 1){ %>
+										<li><%= project_member_results[index].name %></li>
+							<% 		} 
+								}	%>
+						</ul>
+					</div>
+					<div class="add_team_button">
+						<button class="show_add_team_member_modal">Add Team Member</button>
+					</div>
+				</div>
+			</div>
+			<div id="project_description">
+				<p>From : <span><%= project_details_results.timeframe_from %></span></p>
+				<p>To :  <span><%= project_details_results.timeframe_to %></span></p>
+				<p>Description : <span><%= project_details_results.description %></span></p>
+			</div>
+			<ul class="project_tasks upcoming_task">
+				<li>Upcoming Tasks</li>
+				<% 	for(var index = 0; index < project_task_results.length; index++) { %>
+					<%  if(project_task_results[index].task_status == 1){ %>
+						<li>
+							<p><%= project_task_results[index].description %></p>
+							<p><a href="/update_task_status/<%= project_details_results.project_id %>/<%= project_task_results[index].task_id %>/2">move to Ongoing</a></p>
+						</li>
+					<%  } %>
+				<%  } %>
+			</ul>
+			<ul class="project_tasks ongoing_task">
+				<li>Ongoing Tasks</li>
+				<% 	for(var index = 0; index < project_task_results.length; index++) { %>
+					<%  if(project_task_results[index].task_status == 2){ %>
+						<li>
+							<p><%= project_task_results[index].description %></p>
+							<p><a href="/update_task_status/<%= project_details_results.project_id %>/<%= project_task_results[index].task_id %>/3">Completed</a></p>
+						</li>
+					<%  } %>
+				<%  } %>
+			</ul>
+			<ul class="project_tasks completed_task">
+				<li>Completed Tasks</li>
+				<% 	for(var index = 0; index < project_task_results.length; index++) { 
+						if(project_task_results[index].task_status == 3){ %>
+							<li>
+								<p><%= project_task_results[index].description %></p>
+							</li>
+				<%  	} 
+					} %>
+			</ul>
+			<div id="upcoming_task">
+				<p><b>Add Upcoming Task</b></p>
+				<form action="/add_task" method="POST">
+					<input type="hidden" value="<%= project_details_results.project_id %>" name="project_id">
+					<div>
+						<span>Task :</span>
+						<textarea name="description" id="" cols="30" rows="10"></textarea>
+					</div>
+					<div>
+						<span>Assigned to </span>
+						<select name="user_id" id="">
+							<% 	for(var index = 0; index < project_member_results.length; index++) { %>
+								<option value="<%= project_member_results[index].user_id %>"><%= project_member_results[index].name %></option>
+							<% 	}%>
+						</select>
+					</div>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close_add_team_member_modal">&times;</span>
+			<p>Other User to Add as Team Member for <b><%= project_details_results.title %></b> Project</p>
+			<form action="/add_member" method="POST">
+				<input type="hidden" value="<%= project_details_results.project_id %>" name="project_id">
+				<select name="user_id" id="">
+					<% 	for(var index = 0; index < not_member_results.length; index++) { %>
+						<option value="<%= not_member_results[index].id %>"><%= not_member_results[index].name %></option>
+					<% 	}%>
+				</select>
+				<input type="submit" value="Add">
+			</form>
+		</div>
+	</div>
+
+<script>
+	/* Note : Dont update this script */
+	$(".show_add_team_member_modal").click(function(){
+		$(".modal").css("display", "block");
+	})
+
+	$(".close_add_team_member_modal").click(function(){
+		$(".modal").css("display", "none");
+	})
+</script>
+</body>
+</html>

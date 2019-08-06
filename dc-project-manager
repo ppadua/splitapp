@@ -1,0 +1,38 @@
+CREATE SCHEMA `dc_project_manager` ;
+
+
+CREATE TABLE `dc_project_manager`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` TEXT NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `dc_project_manager`.`projects` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` TEXT NULL,
+  `description` TEXT NULL,
+  `timeframe_from` DATETIME NULL,
+  `timeframe_to` DATETIME NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `dc_project_manager`.`tasks` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `project_id` INT NULL,
+  `user_assigned_id` INT NULL,
+  `descriptoin` TEXT NULL,
+  `task_status` INT NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `dc_project_manager`.`user_projects` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NULL,
+  `project_id` INT NULL,
+  `user_type` INT NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`));

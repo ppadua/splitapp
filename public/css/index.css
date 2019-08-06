@@ -1,0 +1,15 @@
+#index_form{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 600px;
+    height: 100px;
+}
+
+#index_form input[type="text"] {
+    width: 350px;
+}
+

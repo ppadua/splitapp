@@ -1,0 +1,27 @@
+*{
+	resize: none;
+}
+#container form .project_description span{
+	vertical-align: top;
+	display: inline-block;
+	width: 150px;
+}
+#container form div{
+	margin-top: 20px;
+}
+#container form div span{
+	display: inline-block;
+	width: 150px;
+}
+#container form div textarea{
+	width: 170px;
+	height: 50px;
+}
+#container form .time_frame_to{
+	display: inline-block;
+	width: 20px;
+}
+#container form input[type="submit"]{
+	margin-top: 20px;
+	padding: 5px 10px;
+}
